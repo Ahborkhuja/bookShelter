@@ -53,3 +53,12 @@ body {
 .butn{
   color:#0D75FF;
 }
+.bgIm{
+  width: 100vw;
+  height:100vh;
+  background-image: url("../img/books.jpg");
+  background-size:500px;
+}
+.Icol>[placeholders]{
+  color: white!important;
+}
