@@ -1,10 +1,10 @@
 body {
-  background-color: #E3E6EB;
+  background-color: #e3e6eb;
 }
 
 .search::before {
   display: inline-block;
-  content: 'dasdas';
+  content: "dasdas";
   width: 50px;
   height: 50px;
   background-image: url("../img/Lupa.svg");
@@ -14,7 +14,7 @@ body {
 
 [butn]::before {
   display: inline-block;
-  content: '';
+  content: "";
   width: 20px;
   height: 20px;
   background-image: url("../img/calendar.svg");
@@ -38,30 +38,44 @@ body {
   background-size: cover;
 }
 
-.card-title>h5 {
-  font-family: 'Rubik';
+.card-title > h5 {
+  font-family: "Rubik";
   font-style: normal;
   color: #000000;
-
 }
 
-.card-title>h6 {
-  font-family: 'Noto Sans';
+.card-title > h6 {
+  font-family: "Noto Sans";
   font-style: normal;
   color: #757881;
 }
-.butn{
-  color:#0D75FF;
+.butn {
+  color: #0d75ff;
 }
-.bgIm{
+.bgIm {
   width: 100vw;
-  height:100vh;
+  height: 100vh;
   background-image: url("../img/books.jpg");
-  background-size:500px;
+  background-size: 500px;
 }
-.Icol>[placeholders]{
-  color: white!important;
+.Icol > [placeholders] {
+  color: white !important;
 }
-.butn_bg{
+.butn_bg {
   background-color: #aacfff;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  right: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 30;
+  display: flex;
+  justify-content: flex-end;
+  transition: right 1s ease-in-out;
+}
+
+.active {
+  right: 0%;
 }
