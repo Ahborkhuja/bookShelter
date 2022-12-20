@@ -1,4 +1,7 @@
 import { priceFormatter as formatter } from "../utils/helpers.js";
+import { showModal } from "../modal.js";
+
+import { BooksApi } from "./getBooksFromApi.js";
 
 export class Books {
   constructor(author, title, price, category, date, publisherName, rate) {
@@ -11,7 +14,7 @@ export class Books {
     this.rate = rate;
   }
 
-  static renderBooks(arr, loading, books_content) {
+  renderBooks(arr, loading, books_content) {
     let result = loading
       ? `<div class="spinner-border" role="status">
   <span class="visually-hidden">Loading...</span>
@@ -33,12 +36,8 @@ export class Books {
           <img src="./img/i.png" alt="i" />
           <p>Cost: ${formatter(element.price)} so'm</p>
           <div class="button">
-            <button class="Edit" onclick="editCard('${
-              element.id
-            }')">Edit</button>
-            <button class="Delete" onclick="deleteCard('${
-              element.id
-            }')" >Delete</button>
+            <button class="Edit" data-id=${element.id}>Edit</button>
+            <button class="Delete"  data-id=${element.id}>Delete</button>
           </div>
         </div>
       </div>
@@ -47,6 +46,19 @@ export class Books {
         `;
     });
 
+    const editCardFunc = new BooksApi(
+      "https://test-book-e1835-default-rtdb.firebaseio.com"
+    );
+
     books_content.innerHTML = result;
+
+    const cardsEditBtns = document.querySelectorAll(".Edit");
+
+    cardsEditBtns.forEach((item) => {
+      item.addEventListener(
+        "click",
+        editCardFunc.editCard.bind(editCardFunc, item.dataset.id)
+      );
+    });
   }
 }
